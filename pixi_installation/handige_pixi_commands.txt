@@ -1,0 +1,18 @@
+# Installatie
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+pixi install
+pixi run setup
+pixi run jupyter
+
+
+# Package
+pixi remove Package
+pixi add Package
+
+
+# Herinstallatie
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+Remove-Item -Recurse -Force .pixi
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+pixi install
+pixi run setup

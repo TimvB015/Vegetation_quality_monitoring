@@ -1,0 +1,1613 @@
+    ################################################################################
+    ## WD2 / WD3 / WD4 [ONLY UNSTABLE]
+    ################################################################################
+
+    # ==================== BACKGROUNDS ====================
+    # BACKGROUNDS 
+    background_config = {
+        "All Data": {
+            "raster_path": pdok_imgs_path,
+            "colorscheme": "rgb",
+            "band_mapping": "auto",
+            "background_alpha_override": 0.7,
+        },
+        "Training Data": {
+            "raster_path": pdok_imgs_path,
+            "colorscheme": "rgb",
+            "band_mapping": "auto",
+            "background_alpha_override": 0.7,
+        },
+        "Validation Data": {
+            "raster_path": pdok_imgs_path,
+            "colorscheme": "rgb",
+            "band_mapping": "auto",
+            "background_alpha_override": 0.7,
+        },
+        "Carto": {
+            "raster_path": carto_output_path,
+            "colorscheme": "CLASS-MAP",
+            "band_mapping": "auto",
+            "background_alpha_override": None,
+            "color_df": colors_df,
+        },
+        "RF Q1": {
+            "raster_path": RF_Q1_path,
+            "colorscheme": "CLASS-MAP",
+            "band_mapping": "auto",
+            "background_alpha_override": None,
+            "color_df": colors_df,
+        },
+        "RF Q2": {
+            "raster_path": RF_Q2_path,
+            "colorscheme": "CLASS-MAP",
+            "band_mapping": "auto",
+            "background_alpha_override": None,
+            "color_df": colors_df,
+        },
+        "RF Q3": {
+            "raster_path": RF_Q3_path,
+            "colorscheme": "CLASS-MAP",
+            "band_mapping": "auto",
+            "background_alpha_override": None,
+            "color_df": colors_df,
+        },
+        "RF Q4": {
+            "raster_path": RF_Q4_path,
+            "colorscheme": "CLASS-MAP",
+            "band_mapping": "auto",
+            "background_alpha_override": None,
+            "color_df": colors_df,
+        },
+        "RF row stability": {
+            "raster_path": pdok_imgs_path,
+            "colorscheme": "rgb",
+            "band_mapping": "auto",
+            "background_alpha_override": 0.5,
+        },
+        "RF stable pixels": {
+            "raster_path": pdok_imgs_path,
+            "colorscheme": "rgb",
+            "band_mapping": "auto",
+            "background_alpha_override": 0.25,
+        },
+        "RF unstable pixels": {
+            "raster_path": pdok_imgs_path,
+            "colorscheme": "rgb",
+            "band_mapping": "auto",
+            "background_alpha_override": 0.25,
+        },
+    }
+
+    # ==================== GDF OVERLAYS ====================
+    # GDF OVERLAYS
+    gdf_overlay_config = {
+        "All Data": [
+            {
+                "gdf": sub_aois_overlay_gdf,
+                "edgecolor": "red",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "solid",
+                "zorder": 4,
+                "label": "Focus Area",
+            },
+            {
+                "gdf": aois_overlay_gdf,
+                "edgecolor": "black",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "--",
+                "zorder": 5,
+                "label": "Natural Area",
+            },
+            {
+                "gdf": all_pixels_plotting_gdf,
+                "zorder": 4,
+                "linewidth": 0.1,
+                "alpha": 1,
+            },
+        ],
+        "Training Data": [
+            {
+                "gdf": sub_aois_overlay_gdf,
+                "edgecolor": "red",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "solid",
+                "zorder": 4,
+                "label": "Focus Area",
+            },
+            {
+                "gdf": aois_overlay_gdf,
+                "edgecolor": "black",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "--",
+                "zorder": 5,
+                "label": "Natural Area",
+            },
+            {
+                "gdf": train_gdf,
+                "zorder": 4,
+                "linewidth": 0.1,
+                "alpha": 1,
+            },
+        ],
+        "Validation Data": [
+            {
+                "gdf": sub_aois_overlay_gdf,
+                "edgecolor": "red",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "solid",
+                "zorder": 4,
+                "label": "Focus Area",
+            },
+            {
+                "gdf": aois_overlay_gdf,
+                "edgecolor": "black",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "--",
+                "zorder": 5,
+                "label": "Natural Area",
+            },
+            {
+                "gdf": val_gdf,
+                "zorder": 4,
+                "linewidth": 0.1,
+                "alpha": 1,
+            },
+        ],
+        "Carto": [
+            {
+                "gdf": sub_aois_overlay_gdf,
+                "edgecolor": "red",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "solid",
+                "zorder": 4,
+                "label": "Focus Area",
+            },
+            {
+                "gdf": aois_overlay_gdf,
+                "edgecolor": "black",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "--",
+                "zorder": 5,
+                "label": "Natural Area",
+            },
+        ],
+        "RF Q1": [
+            {
+                "gdf": sub_aois_overlay_gdf,
+                "edgecolor": "red",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "solid",
+                "zorder": 4,
+                "label": "Focus Area",
+            },
+            {
+                "gdf": aois_overlay_gdf,
+                "edgecolor": "black",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "--",
+                "zorder": 5,
+                "label": "Natural Area",
+            },
+        ],
+        "RF Q2": [
+            {
+                "gdf": sub_aois_overlay_gdf,
+                "edgecolor": "red",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "solid",
+                "zorder": 4,
+                "label": "Focus Area",
+            },
+            {
+                "gdf": aois_overlay_gdf,
+                "edgecolor": "black",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "--",
+                "zorder": 5,
+                "label": "Natural Area",
+            },
+        ],
+        "RF Q3": [
+            {
+                "gdf": sub_aois_overlay_gdf,
+                "edgecolor": "red",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "solid",
+                "zorder": 4,
+                "label": "Focus Area",
+            },
+            {
+                "gdf": aois_overlay_gdf,
+                "edgecolor": "black",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "--",
+                "zorder": 5,
+                "label": "Natural Area",
+            },
+        ],
+        "RF Q4": [
+            {
+                "gdf": sub_aois_overlay_gdf,
+                "edgecolor": "red",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "solid",
+                "zorder": 4,
+                "label": "Focus Area",
+            },
+            {
+                "gdf": aois_overlay_gdf,
+                "edgecolor": "black",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "--",
+                "zorder": 5,
+                "label": "Natural Area",
+            },
+        ],
+        "RF row stability": [
+            {
+                "gdf": sub_aois_overlay_gdf,
+                "edgecolor": "red",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "solid",
+                "zorder": 4,
+                "label": "Focus Area",
+            },
+            {
+                "gdf": aois_overlay_gdf,
+                "edgecolor": "black",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "--",
+                "zorder": 5,
+                "label": "Natural Area",
+            },
+        ],
+        "RF stable pixels": [
+            {
+                "gdf": sub_aois_overlay_gdf,
+                "edgecolor": "red",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "solid",
+                "zorder": 4,
+                "label": "Focus Area",
+            },
+            {
+                "gdf": aois_overlay_gdf,
+                "edgecolor": "black",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "--",
+                "zorder": 5,
+                "label": "Natural Area",
+            },
+        ],
+        "RF unstable pixels": [
+            {
+                "gdf": sub_aois_overlay_gdf,
+                "edgecolor": "red",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "solid",
+                "zorder": 4,
+                "label": "Focus Area",
+            },
+            {
+                "gdf": aois_overlay_gdf,
+                "edgecolor": "black",
+                "facecolor": "none",
+                "linewidth": 1.0,
+                "linestyle": "--",
+                "zorder": 5,
+                "label": "Natural Area",
+            },
+        ],
+    }
+
+    # ==================== ROW STABILITY ====================
+    # ROW STABILITY (LAST COLS)
+    RF_row_stability_config = {
+        "RF row stability": [
+            {
+                "raster_path": RF_row_stability_Q1234_path,
+                "color_df": RF_row_stability_color_df,
+                "alpha_map": {
+                    1: 1.0,    
+                    2: 1.0,   
+                    4: 1.0,
+                    5: 1.0,
+                }
+            },
+        ]
+    }
+
+    RF_row_stable_pixels_config = {
+        "RF stable pixels": [
+            {
+                "stability_path": RF_row_stability_Q1234_path,
+                "modal_class_path": RF_row_modal_class_Q1234_path,
+                "color_df": colors_df_no_remaining,
+                "stabilities_to_include": [1, 2],
+                "alpha_map": {
+                    1: 1.0,
+                    2: 0.5,
+                },
+            }
+        ]
+    }
+
+    RF_row_unstable_pixels_config = {
+        "RF unstable pixels": [
+            {
+                "unstable_pixels_path": RF_row_unstable_pixels_Q1234_path,
+                "alpha": 1.0,
+                "zorder": 2,
+                "include_legend_keys": ["highly_unstable"],
+                # "exclude_legend_keys": ["highly_unstable"],
+            }
+        ]
+    }
+
+
+    # ==================== COL STABILITY ====================
+    # COL STABILITY (BOTTOM ROWS)
+    meta_rows_config = {
+        "Stability": {
+            "base_columns": ["Carto", "RF Q1", "RF Q2", "RF Q3", "RF Q4"],
+            "background_config": {
+                "Carto": {
+                    "raster_path": pdok_imgs_path,
+                    "colorscheme": "rgb",
+                    "band_mapping": "auto",
+                    "background_alpha_override": 0.5,
+                },
+                "RF Q1": {
+                    "raster_path": pdok_imgs_path,
+                    "colorscheme": "rgb",
+                    "band_mapping": "auto",
+                    "background_alpha_override": 0.5,
+                },
+                "RF Q2": {
+                    "raster_path": pdok_imgs_path,
+                    "colorscheme": "rgb",
+                    "band_mapping": "auto",
+                    "background_alpha_override": 0.5,
+                },
+                "RF Q3": {
+                    "raster_path": pdok_imgs_path,
+                    "colorscheme": "rgb",
+                    "band_mapping": "auto",
+                    "background_alpha_override": 0.5,
+                },
+                "RF Q4": {
+                    "raster_path": pdok_imgs_path,
+                    "colorscheme": "rgb",
+                    "band_mapping": "auto",
+                    "background_alpha_override": 0.5,
+                },
+            },
+            "gdf_overlay_config": {
+                "Carto": [
+                    {
+                        "gdf": sub_aois_overlay_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "solid",
+                        "zorder": 4,
+                        "label": "Focus Area",
+                    },
+                    {
+                        "gdf": aois_overlay_gdf,
+                        "edgecolor": "black",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "--",
+                        "zorder": 5,
+                        "label": "Natural Area",
+                    },
+                ],
+                "RF Q1": [
+                    {
+                        "gdf": sub_aois_overlay_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "solid",
+                        "zorder": 4,
+                        "label": "Focus Area",
+                    },
+                    {
+                        "gdf": aois_overlay_gdf,
+                        "edgecolor": "black",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "--",
+                        "zorder": 5,
+                        "label": "Natural Area",
+                    },
+                ],
+                "RF Q2": [
+                    {
+                        "gdf": sub_aois_overlay_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "solid",
+                        "zorder": 4,
+                        "label": "Focus Area",
+                    },
+                    {
+                        "gdf": aois_overlay_gdf,
+                        "edgecolor": "black",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "--",
+                        "zorder": 5,
+                        "label": "Natural Area",
+                    },
+                ],
+                "RF Q3": [
+                    {
+                        "gdf": sub_aois_overlay_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "solid",
+                        "zorder": 4,
+                        "label": "Focus Area",
+                    },
+                    {
+                        "gdf": aois_overlay_gdf,
+                        "edgecolor": "black",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "--",
+                        "zorder": 5,
+                        "label": "Natural Area",
+                    },
+                ],
+                "RF Q4": [
+                    {
+                        "gdf": sub_aois_overlay_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "solid",
+                        "zorder": 4,
+                        "label": "Focus Area",
+                    },
+                    {
+                        "gdf": aois_overlay_gdf,
+                        "edgecolor": "black",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "--",
+                        "zorder": 5,
+                        "label": "Natural Area",
+                    },
+                ],
+            },
+
+            "RF_row_stability_config": {
+                "Carto": [
+                    {
+                        "raster_path": carto_col_stability_path,
+                        "color_df": RF_row_stability_color_df,
+                        "alpha_map": {
+                            1: 1.0,    
+                            2: 1.0,   
+                            3: 1.0,
+                            4: 1.0,
+                            5: 1.0,
+                        },
+                    }
+                ],
+                "RF Q1": [
+                    {
+                        "raster_path": RF_col_stability_Q1_path,
+                        "color_df": RF_row_stability_color_df,
+                        "alpha_map": {
+                            1: 1.0,    
+                            2: 1.0,   
+                            3: 1.0,
+                            4: 1.0,
+                            5: 1.0,
+                        },
+                    }
+                ],
+                "RF Q2": [
+                    {
+                        "raster_path": RF_col_stability_Q2_path,
+                        "color_df": RF_row_stability_color_df,
+                        "alpha_map": {
+                            1: 1.0,    
+                            2: 1.0,   
+                            3: 1.0,
+                            4: 1.0,
+                            5: 1.0,
+                        },
+                    }
+                ],
+                "RF Q3": [
+                    {
+                        "raster_path": RF_col_stability_Q3_path,
+                        "color_df": RF_row_stability_color_df,
+                        "alpha_map": {
+                            1: 1.0,    
+                            2: 1.0,   
+                            3: 1.0,
+                            4: 1.0,
+                            5: 1.0,
+                        },
+                    }
+                ],
+                "RF Q4": [
+                    {
+                        "raster_path": RF_col_stability_Q4_path,
+                        "color_df": RF_row_stability_color_df,
+                        "alpha_map": {
+                            1: 1.0,    
+                            2: 1.0,   
+                            3: 1.0,
+                            4: 1.0,
+                            5: 1.0,
+                        },
+                    }
+                ],
+            },
+            "illustrations_config": {
+                "Carto": {
+                    "illustrations": ["stability_percentages", "north_arrow", "scalebar", "line_legend"],
+                    "settings": {
+                        "stability_percentages": {
+                            "color_df": RF_row_stability_color_df,
+                            "raster_path_template": carto_col_stability_path,
+                        },
+                    },
+                },
+                "RF Q1": {
+                    "illustrations": ["stability_percentages", "north_arrow", "scalebar", "line_legend"],
+                    "settings": {
+                        "stability_percentages": {
+                            "color_df": RF_row_stability_color_df,
+                            "raster_path_template": RF_col_stability_Q1_path,
+                        },
+                    },
+                },
+                "RF Q2": {
+                    "illustrations": ["stability_percentages", "north_arrow", "scalebar", "line_legend"],
+                    "settings": {
+                        "stability_percentages": {
+                            "color_df": RF_row_stability_color_df,
+                            "raster_path_template": RF_col_stability_Q2_path,
+                        },
+                    },
+                },
+                "RF Q3": {
+                    "illustrations": ["stability_percentages", "north_arrow", "scalebar", "line_legend"],
+                    "settings": {
+                        "stability_percentages": {
+                            "color_df": RF_row_stability_color_df,
+                            "raster_path_template": RF_col_stability_Q3_path,
+                        },
+                    },
+                },
+                "RF Q4": {
+                    "illustrations": ["stability_percentages", "north_arrow", "scalebar", "line_legend"],
+                    "settings": {
+                        "stability_percentages": {
+                            "color_df": RF_row_stability_color_df,
+                            "raster_path_template": RF_col_stability_Q4_path,
+                        },
+                    },
+                },
+            },
+        },
+
+        "Stable Pixels": {
+            "base_columns": ["Carto", "RF Q1", "RF Q2", "RF Q3", "RF Q4"],
+            "background_config": {
+                "Carto": {
+                    "raster_path": pdok_imgs_path,
+                    "colorscheme": "rgb",
+                    "band_mapping": "auto",
+                    "background_alpha_override": 0.25,
+                },
+                "RF Q1": {
+                    "raster_path": pdok_imgs_path,
+                    "colorscheme": "rgb",
+                    "band_mapping": "auto",
+                    "background_alpha_override": 0.25,
+                },
+                "RF Q2": {
+                    "raster_path": pdok_imgs_path,
+                    "colorscheme": "rgb",
+                    "band_mapping": "auto",
+                    "background_alpha_override": 0.25,
+                },
+                "RF Q3": {
+                    "raster_path": pdok_imgs_path,
+                    "colorscheme": "rgb",
+                    "band_mapping": "auto",
+                    "background_alpha_override": 0.25,
+                },
+                "RF Q4": {
+                    "raster_path": pdok_imgs_path,
+                    "colorscheme": "rgb",
+                    "band_mapping": "auto",
+                    "background_alpha_override": 0.25,
+                },
+            },
+            "gdf_overlay_config": {
+                "Carto": [
+                    {
+                        "gdf": sub_aois_overlay_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "solid",
+                        "zorder": 4,
+                        "label": "Focus Area",
+                    },
+                    {
+                        "gdf": aois_overlay_gdf,
+                        "edgecolor": "black",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "--",
+                        "zorder": 5,
+                        "label": "Natural Area",
+                    },
+                ],
+                "RF Q1": [
+                    {
+                        "gdf": sub_aois_overlay_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "solid",
+                        "zorder": 4,
+                        "label": "Focus Area",
+                    },
+                    {
+                        "gdf": aois_overlay_gdf,
+                        "edgecolor": "black",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "--",
+                        "zorder": 5,
+                        "label": "Natural Area",
+                    },
+                ],
+                "RF Q2": [
+                    {
+                        "gdf": sub_aois_overlay_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "solid",
+                        "zorder": 4,
+                        "label": "Focus Area",
+                    },
+                    {
+                        "gdf": aois_overlay_gdf,
+                        "edgecolor": "black",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "--",
+                        "zorder": 5,
+                        "label": "Natural Area",
+                    },
+                ],
+                "RF Q3": [
+                    {
+                        "gdf": sub_aois_overlay_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "solid",
+                        "zorder": 4,
+                        "label": "Focus Area",
+                    },
+                    {
+                        "gdf": aois_overlay_gdf,
+                        "edgecolor": "black",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "--",
+                        "zorder": 5,
+                        "label": "Natural Area",
+                    },
+                ],
+                "RF Q4": [
+                    {
+                        "gdf": sub_aois_overlay_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "solid",
+                        "zorder": 4,
+                        "label": "Focus Area",
+                    },
+                    {
+                        "gdf": aois_overlay_gdf,
+                        "edgecolor": "black",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "--",
+                        "zorder": 5,
+                        "label": "Natural Area",
+                    },
+                ],
+            },
+            "RF_row_stable_pixels_config": {
+                "Carto": [
+                    {
+                        "stability_path": carto_col_stability_path,
+                        "modal_class_path": carto_modal_class_path,
+                        "color_df": colors_df_no_remaining,
+                        "stabilities_to_include": [1, 2, 3],
+                        "alpha": 1.0,
+                    }
+                ],
+                "RF Q1": [
+                    {
+                        "stability_path": RF_col_stability_Q1_path,
+                        "modal_class_path": RF_col_modal_class_Q1_path,
+                        "color_df": colors_df_no_remaining,
+                        "stabilities_to_include": [1, 2, 3],
+                        "alpha": 1.0,
+                    }
+                ],
+                "RF Q2": [
+                    {
+                        "stability_path": RF_col_stability_Q2_path,
+                        "modal_class_path": RF_col_modal_class_Q2_path,
+                        "color_df": colors_df_no_remaining,
+                        "stabilities_to_include": [1, 2, 3],
+                        "alpha": 1.0,
+                    }
+                ],
+                "RF Q3": [
+                    {
+                        "stability_path": RF_col_stability_Q3_path,
+                        "modal_class_path": RF_col_modal_class_Q3_path,
+                        "color_df": colors_df_no_remaining,
+                        "stabilities_to_include": [1, 2, 3],
+                        "alpha": 1.0,
+                    }
+                ],
+                "RF Q4": [
+                    {
+                        "stability_path": RF_col_stability_Q4_path,
+                        "modal_class_path": RF_col_modal_class_Q4_path,
+                        "color_df": colors_df_no_remaining,
+                        "stabilities_to_include": [1, 2, 3],
+                        "alpha": 1.0,
+                    }
+                ],
+            },
+            "illustrations_config": {     
+                "Carto": {
+                    "illustrations": ["stability_tiles_legend", "north_arrow", "scalebar", "line_legend"],
+                    "settings": {
+                        "stability_tiles_legend": {
+                            "color_df": colors_df_no_remaining,
+                            "alpha_map": {1: 1.0, 2: 0.5},
+                            "stability_labels": {
+                                1: "≥80% stable",
+                                2: "≥60-80%",
+                            },
+                            "class_name_overrides": {
+                                "Semi-Wet Nature": "Semi-Wet",
+                            },
+                        },
+                    },
+                },
+                "RF Q1": {
+                    "illustrations": ["stability_tiles_legend", "north_arrow", "scalebar", "line_legend"],
+                    "settings": {
+                        "stability_tiles_legend": {
+                            "color_df": colors_df_no_remaining,
+                            "alpha_map": {1: 1.0, 2: 0.5},
+                            "stability_labels": {
+                                1: "≥80% stable",
+                                2: "≥60-80%",
+                            },
+                            "class_name_overrides": {
+                                "Semi-Wet Nature": "Semi-Wet",
+                            },
+                        },
+                    },
+                },
+                "RF Q2": {
+                    "illustrations": ["stability_tiles_legend", "north_arrow", "scalebar", "line_legend"],
+                    "settings": {
+                        "stability_tiles_legend": {
+                            "color_df": colors_df_no_remaining,
+                            "alpha_map": {1: 1.0, 2: 0.5},
+                            "stability_labels": {
+                                1: "≥80% stable",
+                                2: "≥60-80%",
+                            },
+                            "class_name_overrides": {
+                                "Semi-Wet Nature": "Semi-Wet",
+                            },
+                        },
+                    },
+                },
+                "RF Q3": {
+                    "illustrations": ["stability_tiles_legend", "north_arrow", "scalebar", "line_legend"],
+                    "settings": {
+                        "stability_tiles_legend": {
+                            "color_df": colors_df_no_remaining,
+                            "alpha_map": {1: 1.0, 2: 0.5},
+                            "stability_labels": {
+                                1: "≥80% stable",
+                                2: "≥60-80%",
+                            },
+                            "class_name_overrides": {
+                                "Semi-Wet Nature": "Semi-Wet",
+                            },
+                        },
+                    },
+                },
+                "RF Q4": {
+                    "illustrations": ["stability_tiles_legend", "north_arrow", "scalebar", "line_legend"],
+                    "settings": {
+                        "stability_tiles_legend": {
+                            "color_df": colors_df_no_remaining,
+                            "alpha_map": {1: 1.0, 2: 0.5},
+                            "stability_labels": {
+                                1: "≥80% stable",
+                                2: "≥60-80%",
+                            },
+                            "class_name_overrides": {
+                                "Semi-Wet Nature": "Semi-Wet",
+                            },
+                        },
+                    },
+                },
+            },
+        },
+        
+        "Unstable Pixels": {
+            "base_columns": ["Carto", "RF Q1", "RF Q2", "RF Q3", "RF Q4"],
+            "background_config": {
+                "Carto": {
+                    "raster_path": pdok_imgs_path,
+                    "colorscheme": "rgb",
+                    "band_mapping": "auto",
+                    "background_alpha_override": 0.25,
+                },
+                "RF Q1": {
+                    "raster_path": pdok_imgs_path,
+                    "colorscheme": "rgb",
+                    "band_mapping": "auto",
+                    "background_alpha_override": 0.25,
+                },
+                "RF Q2": {
+                    "raster_path": pdok_imgs_path,
+                    "colorscheme": "rgb",
+                    "band_mapping": "auto",
+                    "background_alpha_override": 0.25,
+                },
+                "RF Q3": {
+                    "raster_path": pdok_imgs_path,
+                    "colorscheme": "rgb",
+                    "band_mapping": "auto",
+                    "background_alpha_override": 0.25,
+                },
+                "RF Q4": {
+                    "raster_path": pdok_imgs_path,
+                    "colorscheme": "rgb",
+                    "band_mapping": "auto",
+                    "background_alpha_override": 0.25,
+                },
+            },
+            "gdf_overlay_config": {
+                "Carto": [
+                    {
+                        "gdf": sub_aois_overlay_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "solid",
+                        "zorder": 4,
+                        "label": "Focus Area",
+                    },
+                    {
+                        "gdf": aois_overlay_gdf,
+                        "edgecolor": "black",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "--",
+                        "zorder": 5,
+                        "label": "Natural Area",
+                    },
+                ],
+                "RF Q1": [
+                    {
+                        "gdf": sub_aois_overlay_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "solid",
+                        "zorder": 4,
+                        "label": "Focus Area",
+                    },
+                    {
+                        "gdf": aois_overlay_gdf,
+                        "edgecolor": "black",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "--",
+                        "zorder": 5,
+                        "label": "Natural Area",
+                    },
+                ],
+                "RF Q2": [
+                    {
+                        "gdf": sub_aois_overlay_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "solid",
+                        "zorder": 4,
+                        "label": "Focus Area",
+                    },
+                    {
+                        "gdf": aois_overlay_gdf,
+                        "edgecolor": "black",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "--",
+                        "zorder": 5,
+                        "label": "Natural Area",
+                    },
+                ],
+                "RF Q3": [
+                    {
+                        "gdf": sub_aois_overlay_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "solid",
+                        "zorder": 4,
+                        "label": "Focus Area",
+                    },
+                    {
+                        "gdf": aois_overlay_gdf,
+                        "edgecolor": "black",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "--",
+                        "zorder": 5,
+                        "label": "Natural Area",
+                    },
+                ],
+                "RF Q4": [
+                    {
+                        "gdf": sub_aois_overlay_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "solid",
+                        "zorder": 4,
+                        "label": "Focus Area",
+                    },
+                    {
+                        "gdf": aois_overlay_gdf,
+                        "edgecolor": "black",
+                        "facecolor": "none",
+                        "linewidth": 1.0,
+                        "linestyle": "--",
+                        "zorder": 5,
+                        "label": "Natural Area",
+                    },
+                ],
+            },
+            "RF_row_unstable_pixels_config": {
+                "Carto": [
+                    {
+                        "unstable_pixels_path": carto_unstable_pixels_path,
+                        "alpha": 1.0,
+                        "zorder": 3,
+                        "include_legend_keys": ["highly_unstable"],
+                        # "exclude_legend_keys": ["highly_unstable"],
+                    }
+                ],
+                "RF Q1": [
+                    {
+                        "unstable_pixels_path": RF_col_unstable_pixels_Q1_path,
+                        "alpha": 1.0,
+                        "zorder": 3,
+                        "include_legend_keys": ["highly_unstable"],
+                        # "exclude_legend_keys": ["highly_unstable"],
+                    }
+                ],
+                "RF Q2": [
+                    {
+                        "unstable_pixels_path": RF_col_unstable_pixels_Q2_path,
+                        "alpha": 1.0,
+                        "zorder": 3,
+                        "include_legend_keys": ["highly_unstable"],
+                        # "exclude_legend_keys": ["highly_unstable"],
+                    }
+                ],
+                "RF Q3": [
+                    {
+                        "unstable_pixels_path": RF_col_unstable_pixels_Q3_path,
+                        "alpha": 1.0,
+                        "zorder": 3,
+                        "include_legend_keys": ["highly_unstable"],
+                        # "exclude_legend_keys": ["highly_unstable"],
+                    }
+                ],
+                "RF Q4": [
+                    {
+                        "unstable_pixels_path": RF_col_unstable_pixels_Q4_path,
+                        "alpha": 1.0,
+                        "zorder": 3,
+                        "include_legend_keys": ["highly_unstable"],
+                        # "exclude_legend_keys": ["highly_unstable"],
+                    }
+                ],
+            },
+            "illustrations_config": {
+                "Carto": {
+                    "illustrations": ["unstable_pixels_legend", "north_arrow", "scalebar", "line_legend"],
+                    "settings": {
+                        "unstable_pixels_legend": {
+                            "color_df": highly_unstable_color_df,
+                        },
+                    },
+                },
+                "RF Q1": {
+                    "illustrations": ["unstable_pixels_legend", "north_arrow", "scalebar", "line_legend"],
+                    "settings": {
+                        "unstable_pixels_legend": {
+                            "color_df": highly_unstable_color_df,
+                        },
+                    },
+                },
+                "RF Q2": {
+                    "illustrations": ["unstable_pixels_legend", "north_arrow", "scalebar", "line_legend"],
+                    "settings": {
+                        "unstable_pixels_legend": {
+                            "color_df": highly_unstable_color_df,
+                        },
+                    },
+                },
+                "RF Q3": {
+                    "illustrations": ["unstable_pixels_legend", "north_arrow", "scalebar", "line_legend"],
+                    "settings": {
+                        "unstable_pixels_legend": {
+                            "color_df": highly_unstable_color_df,
+                        },
+                    },
+                },
+                "RF Q4": {
+                    "illustrations": ["unstable_pixels_legend", "north_arrow", "scalebar", "line_legend"],
+                    "settings": {
+                        "unstable_pixels_legend": {
+                            "color_df": highly_unstable_color_df,
+                        },
+                    },
+                },
+            },
+        },
+    }
+
+
+    # ==================== HEADER ROW ====================
+    # HEADER ROW
+    all_pixels_plotting_gdf['years'] = all_pixels_plotting_gdf['years'].astype(int)
+    train_gdf['years'] = train_gdf['years'].astype(int)
+    val_gdf['years'] = val_gdf['years'].astype(int)
+
+    header_row_config = {
+        "window_gdf": windows_gdf[windows_gdf["location"] == "Veluwe overview"],
+        "row_label": "Overview",
+        "background_config": {
+            "All Data": {
+                "raster_path": pdok_full_veluwe_imgs,
+                "colorscheme": "rgb",
+                "band_mapping": "auto",
+                "alpha_override": 0.5,
+            },
+            "Training Data": {
+                "raster_path": pdok_full_veluwe_imgs,
+                "colorscheme": "rgb",
+                "band_mapping": "auto",
+                "alpha_override": 0.5,
+            },
+            "Validation Data": {
+                "raster_path": pdok_full_veluwe_imgs,
+                "colorscheme": "rgb",
+                "band_mapping": "auto",
+                "alpha_override": 0.5,
+            },        
+            "Carto": {
+                "raster_path": pdok_full_veluwe_imgs,
+                "colorscheme": "rgb",
+                "band_mapping": "auto",
+                "alpha_override": 0.5,
+            },
+            "RF Q1": {
+                "raster_path": pdok_full_veluwe_imgs,
+                "colorscheme": "rgb",
+                "band_mapping": "auto",
+                "alpha_override": 0.5,
+            },
+            "RF Q2": {
+                "raster_path": pdok_full_veluwe_imgs,
+                "colorscheme": "rgb",
+                "band_mapping": "auto",
+                "alpha_override": 0.5,
+            },
+            "RF Q3": {
+                "raster_path": pdok_full_veluwe_imgs,
+                "colorscheme": "rgb",
+                "band_mapping": "auto",
+                "alpha_override": 0.5,
+            },
+            "RF Q4": {
+                "raster_path": pdok_full_veluwe_imgs,
+                "colorscheme": "rgb",
+                "band_mapping": "auto",
+                "alpha_override": 0.5,
+            },
+            "RF row stability": {
+                "raster_path": pdok_full_veluwe_imgs,
+                "colorscheme": "rgb",
+                "band_mapping": "auto",
+                "alpha_override": 0.5,
+            },
+            "RF stable pixels": {
+                "raster_path": pdok_full_veluwe_imgs,
+                "colorscheme": "rgb",
+                "band_mapping": "auto",
+                "alpha_override": 0.5,
+            },
+            "RF unstable pixels": {
+                "raster_path": pdok_full_veluwe_imgs,
+                "colorscheme": "rgb",
+                "band_mapping": "auto",
+                "alpha_override": 0.5,
+            },
+        },
+        "gdf_overlay_config": {
+            "All Data": [
+                    {
+                        "gdf": veluwe_polygon__n2000__UTM32631__gdf,
+                        "label": "Veluwe N2000",
+                    },
+                    {
+                        "gdf": header_vis_plot_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 0.7,
+                        "label": "AOI",
+                    },
+                    {
+                        "gdf": all_pixels_plotting_gdf,
+                        "zorder": 4,
+                        "linewidth": 0.1,
+                        "alpha": 1,
+                    },
+
+            ],
+            "Training Data": [
+                    {
+                        "gdf": veluwe_polygon__n2000__UTM32631__gdf,
+                        "label": "Veluwe N2000",
+                    },
+                    {
+                        "gdf": header_vis_plot_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 0.7,
+                        "label": "AOI",
+                    },
+                    {
+                        "gdf": train_gdf,
+                        "zorder": 4,
+                        "linewidth": 0.1,
+                        "alpha": 1,
+                    },
+            ],
+            "Validation Data": [
+                    {
+                        "gdf": veluwe_polygon__n2000__UTM32631__gdf,
+                        "label": "Veluwe N2000",
+                    },
+                    {
+                        "gdf": header_vis_plot_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 0.7,
+                        "label": "AOI",
+                    },
+                    {
+                        "gdf": val_gdf,
+                        "zorder": 4,
+                        "linewidth": 0.1,
+                        "alpha": 1,
+                    },
+            ],
+            "Carto": [
+                    {
+                        "gdf": veluwe_polygon__n2000__UTM32631__gdf,
+                        "label": "Veluwe N2000",
+                    },
+                    {
+                        "gdf": header_vis_plot_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 0.7,
+                        "label": "AOI",
+                    },
+            ],
+            "RF Q1": [
+                    {
+                        "gdf": veluwe_polygon__n2000__UTM32631__gdf,
+                        "label": "Veluwe N2000",
+                    },
+                    {
+                        "gdf": header_vis_plot_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 0.7,
+                        "label": "AOI",
+                    },
+            ],
+            "RF Q2": [
+                    {
+                        "gdf": veluwe_polygon__n2000__UTM32631__gdf,
+                        "label": "Veluwe N2000",
+                    },
+                    {
+                        "gdf": header_vis_plot_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 0.7,
+                        "label": "AOI",
+                    },
+            ],
+            "RF Q3": [
+                    {
+                        "gdf": veluwe_polygon__n2000__UTM32631__gdf,
+                        "label": "Veluwe N2000",
+                    },
+                    {
+                        "gdf": header_vis_plot_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 0.7,
+                        "label": "AOI",
+                    },
+            ],
+            "RF Q4": [
+                    {
+                        "gdf": veluwe_polygon__n2000__UTM32631__gdf,
+                        "label": "Veluwe N2000",
+                    },
+                    {
+                        "gdf": header_vis_plot_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 0.7,
+                        "label": "AOI",
+                    },
+            ],
+            "RF row stability": [
+                    {
+                        "gdf": veluwe_polygon__n2000__UTM32631__gdf,
+                        "label": "Veluwe N2000",
+                    },
+                    {
+                        "gdf": header_vis_plot_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 0.7,
+                        "label": "AOI",
+                    },
+            ],
+            "RF stable pixels": [
+                    {
+                        "gdf": veluwe_polygon__n2000__UTM32631__gdf,
+                        "alpha": 1,
+                        "zorder": 4,
+                        "edgecolor": "black",
+                        "facecolor": "none",
+                        "linewidth": 0.7,
+                        "label": "Veluwe N2000",
+                    },
+                    {
+                        "gdf": header_vis_plot_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 0.7,
+                        "label": "AOI",
+                    },
+            ],
+            "RF unstable pixels": [
+                    {
+                        "gdf": veluwe_polygon__n2000__UTM32631__gdf,
+                        "alpha": 1,
+                        "zorder": 4,
+                        "edgecolor": "black",
+                        "facecolor": "none",
+                        "linewidth": 0.7,
+                        "label": "Veluwe N2000",
+                    },
+                    {
+                        "gdf": header_vis_plot_gdf,
+                        "edgecolor": "red",
+                        "facecolor": "none",
+                        "linewidth": 0.7,
+                        "label": "AOI",
+                    },
+            ],
+        },
+        "illustrations_config": {
+            "All Data": {
+                "illustrations": ["north_arrow", "scalebar", "line_legend"],
+            },
+            "Training Data": {
+                "illustrations": ["north_arrow", "scalebar", "line_legend"],
+            },
+            "Validation Data": {
+                "illustrations": ["north_arrow", "scalebar", "line_legend"],
+            },
+            "Carto": {
+                "illustrations": ["north_arrow", "scalebar", "line_legend"],
+            },
+            "RF Q1": {
+                "illustrations": ["north_arrow", "scalebar", "line_legend"],
+            },
+            "RF Q2": {
+                "illustrations": ["north_arrow", "scalebar", "line_legend"],
+            },
+            "RF Q3": {
+                "illustrations": ["north_arrow", "scalebar", "line_legend"],
+            },
+            "RF Q4": {
+                "illustrations": ["north_arrow", "scalebar", "line_legend"],
+            },
+            "RF row stability": {
+                "illustrations": ["north_arrow", "scalebar", "line_legend"],
+                "settings": {
+                    "consistency_legend": {
+                        "color_df": RF_row_stability_color_df,
+                    },
+                },
+            },
+            "RF stable pixels": {
+                "illustrations": ["north_arrow", "scalebar", "line_legend"],
+                "settings": {
+                    "legend": {
+                        "color_df": colors_df_no_remaining,
+                    },
+                },
+            },
+            "RF unstable pixels": {
+                "illustrations": ["north_arrow", "scalebar", "line_legend"],
+            },
+        },
+    }
+
+
+    # ==================== ILLUSTRATIONS ====================
+    # ILLUSTRATIONS CONFIG
+    illustrations_config = {
+        # Global settings
+        "_global": {
+            "north_arrow": {
+                "svg_path": north_arrow__path,
+            },
+            "scalebar": {},
+            "legend": {
+                "color_df": colors_df,
+            },
+            "consistency_legend": {
+                "loc": "lower right",
+                "title": "Agreement",
+                "title_fontsize": 9,
+                "fontsize": 8,
+            },
+            "class_performance": {
+                "color_df": colors_df,
+                "font_size": 8,
+                "show_class_names": True, 
+                "class_name_font_size": 8,
+                "tile_size": 0.025,
+                "tile_spacing": 0.01,
+                "row_spacing_pts": 8.0,
+                "column_spacing_pts": 64.0, 
+                "class_name_overrides": {
+                    "Semi-Wet Nature": "Semi-Wet",
+                },
+            },
+            "class_pixel_counts": {
+                "color_df": colors_df,
+                "class_column": "type",
+                "font_size": 8,
+                "show_percentage": True,
+                "show_class_names": True,
+                "class_name_font_size": 8, 
+                "tile_size": 0.025, 
+                "tile_spacing": 0.01,
+                "row_spacing_pts": 8.0,  
+                "column_spacing_pts": 62.0,
+                "horizontal_offset_pts": -2.0,
+                "class_name_overrides": {
+                    "Semi-Wet Nature": "Semi-Wet",
+                },
+            },
+            "stability_percentages": {
+                "font_size": 8,
+                "tile_spacing": 0.01,
+                "row_spacing_pts": 8.0,
+                "column_spacing_pts": 60.0,
+                "horizontal_offset_pts": -8.0,
+                "percentage_horizontal_offset_pts": 4.0,
+            },
+            "stability_tiles_legend": {
+                "font_size": 8,
+                "show_class_names": True,
+                "class_name_font_size": 8,
+                "tile_size": 0.025,
+                "tile_spacing": 0.01,
+                "column_spacing": 0.33,
+                "row_spacing_pts": 8.0,
+                "horizontal_offset_pts": -33.0,
+                "class_name_overrides": {
+                    "Semi-Wet Nature": "Semi-Wet",
+                },
+            },
+            "unstable_pixels_legend": {
+                "font_size": 8,
+                "tile_size": 0.025,
+                "tile_spacing": 0.01,
+                "row_spacing_pts": 8.0,  
+                "left_margin": 0.001,      
+                "tiles_per_row": 2,        
+                "label_overrides": {
+                    "Open water / Semi-Wet Nature": "Open water / Semi-Wet",
+                    "Remaining / Semi-Wet Nature": "Remaining / Semi-Wet",
+                    "Semi-Wet Nature / Wet Nature": "Semi-Wet / Wet",
+                },
+                "col1_horizontal_offset_pts": -1.0,
+                "col2_horizontal_offset_pts": 2.0,
+            },
+        },
+        
+        # Column-specific configurations
+        "All Data": {
+            "illustrations": ["class_pixel_counts", "north_arrow", "scalebar", "line_legend"],
+            "settings": {
+                "class_pixel_counts": {
+                    "gdf": all_pixels_plotting_gdf,
+                    "year_column": "years",
+                },
+            },
+        },
+        
+        "Training Data": {
+            "illustrations": ["class_pixel_counts", "north_arrow", "scalebar", "line_legend"],
+            "settings": {
+                "class_pixel_counts": {
+                    "gdf": train_gdf,
+                    "year_column": "years",
+                },
+            },
+        },
+        
+        "Validation Data": {
+            "illustrations": ["class_pixel_counts", "north_arrow", "scalebar", "line_legend"],
+            "settings": {
+                "class_pixel_counts": {
+                    "gdf": val_gdf,
+                    "year_column": "years",
+                },
+            },
+        },
+        
+        "Carto": {
+            "illustrations": ["class_performance", "north_arrow", "scalebar", "line_legend"],
+            "settings": {
+                "class_performance": {
+                    "metrics_df": RF_Q1_stats_df,
+                },
+            },
+        },
+        
+        "RF Q1": {
+            "illustrations": ["class_performance", "north_arrow", "scalebar", "line_legend"],
+            "settings": {
+                "class_performance": {
+                    "metrics_df": RF_Q1_stats_df,
+                },
+            },
+        },
+
+        "RF Q2": {
+            "illustrations": ["class_performance", "north_arrow", "scalebar", "line_legend"],
+            "settings": {
+                "class_performance": {
+                    "metrics_df": RF_Q2_stats_df,
+                },
+            },
+        },
+
+        "RF Q3": {
+            "illustrations": ["class_performance", "north_arrow", "scalebar", "line_legend"],
+            "settings": {
+                "class_performance": {
+                    "metrics_df": RF_Q3_stats_df,
+                },
+            },
+        },
+
+        "RF Q4": {
+            "illustrations": ["class_performance", "north_arrow", "scalebar", "line_legend"],
+            "settings": {
+                "class_performance": {
+                    "metrics_df": RF_Q4_stats_df,
+                },
+            },
+        },
+        
+        "RF row stability": {
+            "illustrations": ["north_arrow", "scalebar", "stability_percentages", "line_legend"],
+            "settings": {
+                "stability_percentages": {
+                    "color_df": RF_row_stability_color_df,
+                    "raster_path_template": RF_row_stability_Q1234_path,
+                },
+            },
+        },
+
+        "RF stable pixels": {
+            "illustrations": ["stability_tiles_legend", "north_arrow", "scalebar", "line_legend"],
+            "settings": {
+                "stability_tiles_legend": {
+                    "color_df": colors_df_no_remaining,
+                    "alpha_map": {1: 1.0, 2: 0.5},
+                    "stability_labels": {
+                        1: "≥80% stable",
+                        2: "≥60-80%",
+                    },
+                },
+            },
+        },
+
+        "RF unstable pixels": {
+            "illustrations": ["north_arrow", "unstable_pixels_legend", "line_legend"],
+            "settings": {
+                "unstable_pixels_legend": {
+                    "color_df": highly_unstable_color_df,
+                },
+            },
+        },
+    }

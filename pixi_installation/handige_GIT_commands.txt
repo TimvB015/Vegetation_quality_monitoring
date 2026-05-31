@@ -1,0 +1,25 @@
+Handige GIT commands
+
+## Algemeen gebruik
+clear				leegt het commandprompt
+git status			geeft je de laatste commits weer
+git add --all 			voegt alle nieuwe bestanden in de folder toe
+git commit -m "MESSAGE"		commit de bestanden die in de "Stage" staan
+git commit -a -m "MESSAGE"	commit bestanden gelijk zonder de stage
+git push			bestanden naar de server sturen
+git pull			download all the files to directory
+
+## Werken met de log van git
+git log				geeft een overview over de commits
+git log -p			geeft een specificatie vd veranderingen per commit
+git reset CODE			gaat terug naar een bepaalde commit
+
+
+## Werken met BRANCHES -> aanpassingen maken zonder dat ze gelijk op de main worden aangepast
+git branch NAME			maakt een branch aan waar je in kan werken
+git switch NAME			veranderd naar de branch
+git merge -m "MESSAGE" BRANCH	voegt de veranderingen van de branch naar de main
+git branch -d NAME		verwijderd de branch die je had
+git branch			geeft alle branches weer
+
+

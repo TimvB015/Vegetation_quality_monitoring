@@ -1,0 +1,5 @@
+[mirrors]
+"https://conda.anaconda.org/conda-forge" = [
+  "https://prefix.dev/conda-forge",
+  "https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge",
+]

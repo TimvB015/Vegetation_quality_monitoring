@@ -1,0 +1,91 @@
+[project]
+name = "Vegetation_quality_monitoring"
+version = "0.0.1"
+description = ""
+authors = [{ name = "TimvB015" }]
+requires-python = ">=3.12,<3.13"
+dependencies = []
+
+
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["win-64"]
+
+
+[tool.pixi.tasks]
+install_editable = "python -m pip install -e ."
+register_kernel = "python -m ipykernel install --user --name vegqual_env --display-name \"Python (vegqual_env)\""
+jupyter = "python -m notebook"
+
+setup = { depends-on = ["install_editable", "register_kernel"] }
+
+
+[tool.pixi.activation.env]
+PYTHONNOUSERSITE = "1"
+GDAL_DATA = "%CONDA_PREFIX%\\Library\\share\\gdal"
+PROJ_LIB  = "%CONDA_PREFIX%\\Library\\share\\proj"
+PROJ_DATA = "%CONDA_PREFIX%\\Library\\share\\proj"
+
+
+[tool.hatch.build.targets.wheel]
+packages = ["functions", "notebooks_dir"]
+
+
+[tool.pixi.dependencies]
+python = "3.12.*"
+
+# --- Core Python / packaging ---
+pip = ">=24,<26"
+ipykernel = ">=6.29,<6.30"
+notebook = ">=7.5.3,<8"
+nbformat = "==5.10.4"
+tomli = ">=2.0.2,<3"
+python-dotenv = ">=1.0.1,<1.1"
+
+# --- Scientific stack ---
+numpy = ">=1.26,<3"
+scipy = ">=1.11,<2"
+pandas = ">=2.3.1,<3"
+xarray = ">=2024.9.0,<2025"
+numba = ">=0.61.2,<0.62"
+dask = ">=2023.11.2"
+lmoments3 = ">=1.0.7,<1.1"
+distributed = ">=2023.11.2,<2026"
+
+# --- Plotting / visualisation ---
+matplotlib = "==3.8.4"
+seaborn = "==0.13.2"
+matplotlib-scalebar = ">=0.8.1,<1"
+folium = ">=0.20.0,<0.21"
+cairosvg = ">=2.7,<3"
+pillow = ">=10,<12"   # usually already pulled in, but explicit is fine
+
+# --- IO / formats ---
+openpyxl = ">=3.1.5,<4"
+xlsxwriter = ">=3.2.5,<4"
+netcdf4 = ">=1.7.2,<2"
+
+# --- GIS / PROJ stack ---
+gdal = ">=3.8,<3.9"
+proj = ">=9.3,<9.4"
+proj-data = "*"
+
+rasterio = ">=1.3.9,<1.4"
+fiona = ">=1.9.6,<2"
+shapely = ">=2.0,<3"
+geopandas = ">=0.14,<1.1"
+rioxarray = ">=0.17.0,<0.18"
+geocube = ">=0.7.0,<0.8"
+rasterstats = ">=0.20.0,<0.21"
+
+# --- Point clouds / LiDAR ---
+laspy = ">=2.0.0,<3"
+
+# --- Optional / currently disabled ---
+# ipyleaflet = ">=0.17.4,<1"
+# ipywidgets = ">=8,<9"

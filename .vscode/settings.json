@@ -1,0 +1,11 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.pixi/envs/default/python.exe",
+  "jupyter.defaultKernel": "Python (vegqual_env)",
+  "typescript.tsserver.maxTsServerMemory": 6144,
+  "accessibility.signals.notebookCellCompleted": {
+    "sound": "on"
+  },
+  "accessibility.signals.notebookCellFailed": {
+    "sound": "on"
+  }
+}
